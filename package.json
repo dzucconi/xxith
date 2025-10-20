@@ -1,0 +1,13 @@
+{
+  "name": "xxith",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel src/index.html --open",
+    "build": "parcel build src/index.html"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.16.0",
+    "parcel": "^2.16.0"
+  }
+}
