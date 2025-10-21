@@ -43,7 +43,7 @@ export class Renderer {
   }
 
   private wrap(unit: string): string {
-    return `<span class="countdown-${unit}"><%= ${unit} %></span>`;
+    return `<span class="countdown__unit countdown__unit--${unit}"><%= ${unit} %></span>`;
   }
 
   private createPeriods(): Periods {
@@ -59,7 +59,8 @@ export class Renderer {
   }
 
   public html(ts: countdown.Timespan): string {
-    const separator = '<span class="blink">:</span>';
+    const separator =
+      '<span class="countdown__separator countdown__separator--blink">:</span>';
     const data: Record<string, string | number> = {};
 
     ["hours", "minutes", "seconds"].forEach((period) => {

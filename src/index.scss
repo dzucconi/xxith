@@ -7,27 +7,41 @@ body {
   font-family: sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+
+  &.hide-cursor,
+  &.hide-cursor * {
+    cursor: none !important;
+  }
 }
 
-.container {
+.countdown {
   height: 100%;
   width: 100%;
   display: table;
-}
 
-.count {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  cursor: default;
-  user-select: none;
-}
+  &__display {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    cursor: default;
+    user-select: none;
+  }
 
-.countdown-hours,
-.countdown-minutes,
-.countdown-seconds {
-  display: inline-block;
-  min-width: 1.1em;
+  &__unit {
+    &--hours,
+    &--minutes,
+    &--seconds {
+      display: inline-block;
+      min-width: 1.1em;
+    }
+  }
+
+  &__separator {
+    &--blink {
+      margin-right: 0.075em;
+      animation: blinker 1s infinite cubic-bezier(1, 0, 0, 1);
+    }
+  }
 }
 
 @keyframes blinker {
@@ -37,9 +51,4 @@ body {
   to {
     opacity: 0;
   }
-}
-
-.blink {
-  margin-right: 0.075em;
-  animation: blinker 1s infinite cubic-bezier(1, 0, 0, 1);
 }
