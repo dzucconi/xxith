@@ -1,9 +1,9 @@
-import countdown from "countdown";
+import countdown from "../lib/countdown";
 import { Renderer } from "./Renderer";
 
 export class CountdownTimer {
   private el: HTMLElement;
-  private timerId: number | countdown.Timespan;
+  private timerId: number;
 
   constructor(selector: string, date: Date, formatString?: string) {
     const element = document.querySelector(selector);
@@ -16,7 +16,7 @@ export class CountdownTimer {
 
     this.timerId = countdown(
       date,
-      (ts: countdown.Timespan) => {
+      (ts) => {
         this.el.innerHTML = renderer.html(ts);
       },
       renderer.units

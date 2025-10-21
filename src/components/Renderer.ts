@@ -1,8 +1,8 @@
-import countdown from "countdown";
+import countdown, { type Timespan } from "../lib/countdown";
 import { simpleTemplate } from "../utils/template";
 
 interface UnitMap {
-  [key: string]: keyof typeof countdown;
+  [key: string]: string;
 }
 
 interface Periods {
@@ -33,7 +33,7 @@ export class Renderer {
   private parse(formatString: string): number {
     return formatString.split("").reduce((memo, unit) => {
       const unitKey = this.map[unit];
-      const unitValue = countdown[unitKey] as number;
+      const unitValue = (countdown as any)[unitKey] as number;
       return unitValue | memo;
     }, 0);
   }
@@ -58,13 +58,13 @@ export class Renderer {
     };
   }
 
-  public html(ts: countdown.Timespan): string {
+  public html(ts: Timespan): string {
     const separator =
       '<span class="countdown__separator countdown__separator--blink">:</span>';
     const data: Record<string, string | number> = {};
 
     ["hours", "minutes", "seconds"].forEach((period) => {
-      const key = period as keyof countdown.Timespan;
+      const key = period as keyof Timespan;
       const value = ts[key];
       if (value !== undefined) {
         data[period] = this.pad(value as number);
@@ -72,7 +72,7 @@ export class Renderer {
     });
 
     ["years", "months", "weeks", "days"].forEach((period) => {
-      const key = period as keyof countdown.Timespan;
+      const key = period as keyof Timespan;
       const value = ts[key];
       if (typeof value === "number") {
         data[period] = value;
