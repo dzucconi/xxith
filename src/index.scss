@@ -1,7 +1,45 @@
 html,
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  width: 100%;
+  overflow: hidden;
+  font-family: sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
   height: 100%;
+  width: 100%;
+  display: table;
+}
+
+.count {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  cursor: default;
+  user-select: none;
+}
+
+.countdown-hours,
+.countdown-minutes,
+.countdown-seconds {
+  display: inline-block;
+  min-width: 1.1em;
+}
+
+@keyframes blinker {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.blink {
+  margin-right: 0.075em;
+  animation: blinker 1s infinite cubic-bezier(1, 0, 0, 1);
 }

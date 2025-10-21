@@ -1,1 +1,7 @@
-console.log("Hello, world!");
+import { App } from "./app";
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => App.initialize());
+} else {
+  App.initialize();
+}
