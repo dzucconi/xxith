@@ -1,6 +1,5 @@
 import { configure } from "queryparams";
 import { toDate, type DateParams } from "./utils/date";
-import { fitText } from "./utils/fitText";
 import { hideCursor } from "./utils/hideCursor";
 import { CountdownTimer } from "./components/CountdownTimer";
 
@@ -24,7 +23,6 @@ export const App = {
 
     document.body.style.backgroundColor = finalOptions.bgcolor;
     document.body.style.color = finalOptions.color;
-    fitText(document.body, 1.5);
     hideCursor(document.body, 3000);
   },
 
