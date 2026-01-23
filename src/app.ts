@@ -2,6 +2,7 @@ import { configure } from "queryparams";
 import { toDate, type DateParams } from "./utils/date";
 import { hideCursor } from "./utils/hideCursor";
 import { setupFullscreenOnDoubleClick } from "./utils/fullscreen";
+import { setupColorPickers } from "./utils/colorPicker";
 import { CountdownTimer } from "./components/CountdownTimer";
 
 interface DisplayOptions {
@@ -48,5 +49,6 @@ export const App = {
     });
 
     setupFullscreenOnDoubleClick();
+    setupColorPickers();
   },
 };
