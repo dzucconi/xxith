@@ -4,6 +4,7 @@ import { hideCursor } from "./utils/hideCursor";
 import { setupFullscreenOnDoubleClick } from "./utils/fullscreen";
 import { setupColorPickers } from "./utils/colorPicker";
 import { CountdownTimer } from "./components/CountdownTimer";
+import { setupKiosk } from "./components/Kiosk";
 
 interface DisplayOptions {
   bgcolor: string;
@@ -41,7 +42,11 @@ export const App = {
       color: "black",
     });
 
-    new CountdownTimer("#count", toDate(params), params.format);
+    if (new URLSearchParams(location.search).has("kiosk")) {
+      setupKiosk();
+    } else {
+      new CountdownTimer("#count", toDate(params), params.format);
+    }
 
     this.displayOptions({
       color: params.color,
